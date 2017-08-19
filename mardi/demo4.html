@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>My first Three.js app</title>
+		<style>
+			body { margin: 0; }
+			canvas { width: 100%; height: 100% }
+		</style>
+	</head>
+	<body>
+		<script src="js/three.min.js"></script>
+		<script src="js/cgip.js"></script>
+		<script>
+		
+		    var scenario = new Scenario();
+		    
+			
+			var count = 200;
+			var index;
+			
+			for (index = 0; index < count; index++) {
+
+				var color = 0xffffff;
+				if (index > count - 3) {
+					color = 0xff0000;
+				}
+				
+				sphere = new Ball( color );				
+				sphere.track = index * 0.03 + 0.75;
+				
+	            scenario.add(sphere);
+	            
+	            if (index == 100) {
+	            
+					var light = new LightBulb( 0xffffff );
+    		    	light.track = 3.75;
+            		scenario.add(light);
+	
+	            }
+			    
+			}
+
+			scenario.add(new Cruiser( 0x00ffff ));
+	
+			scenario.start();
+			
+		</script>
+<h3><a href="http://threejs.org/docs/index.html#Manual/Introduction/Creating_a_scene" target="_blank">Docs</a></h3>
+	</body>
+</html>
